@@ -53,6 +53,7 @@ class ApiCall {
       throw AppException(
         title: APIErrorMsg.noInternet,
         message: APIErrorMsg.noInternetMsg,
+        type: ExceptionType.NoInternet,
       );
     }
     return true;

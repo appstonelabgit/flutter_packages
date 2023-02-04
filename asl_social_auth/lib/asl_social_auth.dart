@@ -59,37 +59,37 @@ class SocialLoginService {
     switch (type) {
 
       // Google...
-      case SocialLoginType.Google:
+      case SocialLoginType.google:
         _authUser = await _signInWithGoogle();
         break;
 
       // Facebook...
-      case SocialLoginType.Facebook:
+      case SocialLoginType.facebook:
         _authUser = await _signInWithFacebook();
         break;
 
       // Email-password Sign-In...
-      case SocialLoginType.EmailPasswordSignIn:
+      case SocialLoginType.emailPasswordSignIn:
         _signInWithEmailPassword(email: email, password: password);
         break;
 
       // Email-password Sign-Up...
-      case SocialLoginType.EmailPasswordSignUp:
+      case SocialLoginType.emailPasswordSignUp:
         _signUpWithEmailPassword(email: email, password: password);
         break;
 
       // Anonymously...
-      case SocialLoginType.Anonymously:
+      case SocialLoginType.anonymously:
         _authUser = await _signInAnoymously();
         break;
 
       // Twitter...
-      case SocialLoginType.Twitter:
+      case SocialLoginType.twitter:
         _authUser = await _signInWithTiwtter();
         break;
 
       // Apple...
-      case SocialLoginType.Apple:
+      case SocialLoginType.apple:
         _authUser = await _signInWithApple();
         break;
     }
@@ -103,33 +103,33 @@ class SocialLoginService {
     switch (type) {
 
       // Google...
-      case SocialLoginType.Google:
+      case SocialLoginType.google:
         await GoogleSignIn().signOut();
         break;
 
       // Facebook...
-      case SocialLoginType.Facebook:
+      case SocialLoginType.facebook:
         await FacebookAuth.instance.logOut();
         break;
 
       // Email-password Sign-In...
-      case SocialLoginType.EmailPasswordSignIn:
+      case SocialLoginType.emailPasswordSignIn:
         break;
 
       // Email-password Sign-Up...
-      case SocialLoginType.EmailPasswordSignUp:
+      case SocialLoginType.emailPasswordSignUp:
         break;
 
       // Anonymously...
-      case SocialLoginType.Anonymously:
+      case SocialLoginType.anonymously:
         break;
 
       // Twitter...
-      case SocialLoginType.Twitter:
+      case SocialLoginType.twitter:
         break;
 
       // Apple...
-      case SocialLoginType.Apple:
+      case SocialLoginType.apple:
         break;
     }
 

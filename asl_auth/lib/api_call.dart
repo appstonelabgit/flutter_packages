@@ -23,23 +23,23 @@ class ApiCall {
     } on SocketException catch (e) {
       throw AppException(
         message: e.message,
-        type: ExceptionType.NoInternet,
+        type: ExceptionType.noInternet,
       );
     } on HttpException catch (e) {
       throw AppException(
         message: e.message,
-        type: ExceptionType.HTTPException,
+        type: ExceptionType.hTTPException,
       );
     } on FormatException catch (e) {
       throw AppException(
         message: e.source?.toString(),
-        type: ExceptionType.FormatException,
+        type: ExceptionType.formatException,
       );
     } on TimeoutException {
       throw AppException(
         title: APIErrorMsg.requestTimeOutTitle,
         message: APIErrorMsg.requestTimeOutMessage,
-        type: ExceptionType.TimeOut,
+        type: ExceptionType.timeOut,
       );
     } catch (error) {
       throw error;
@@ -53,7 +53,7 @@ class ApiCall {
       throw AppException(
         title: APIErrorMsg.noInternet,
         message: APIErrorMsg.noInternetMsg,
-        type: ExceptionType.NoInternet,
+        type: ExceptionType.noInternet,
       );
     }
     return true;
@@ -74,7 +74,7 @@ class ApiCall {
 
     //Call API with respect to request type...
     switch (requestInfo.requestType) {
-      case HTTPRequestType.POST:
+      case HTTPRequestType.post:
         response = await http.post(
           Uri.parse(_url),
           body: requestInfo.parameter == null
@@ -83,19 +83,19 @@ class ApiCall {
           headers: apiHeader,
         );
         break;
-      case HTTPRequestType.GET:
+      case HTTPRequestType.get:
         response = await http.get(
           Uri.parse(_url),
           headers: apiHeader,
         );
         break;
-      case HTTPRequestType.DELETE:
+      case HTTPRequestType.delete:
         response = await http.delete(
           Uri.parse(_url),
           headers: apiHeader,
         );
         break;
-      case HTTPRequestType.PUT:
+      case HTTPRequestType.put:
         response = await http.put(
           Uri.parse(_url),
           body: requestInfo.parameter == null
@@ -169,7 +169,8 @@ class ApiCall {
   // API info...
   static void _printApiDetial(APIRequestInfoObj info) {
     if (kReleaseMode) return;
-    String apiLog = """
+    String apiLog =
+        """
 
         ${info.serviceName} Service Parameters
         |-------------------------------------------------------------------------------------------------------------------------
@@ -185,7 +186,8 @@ class ApiCall {
   static void _printResponse(http.Response response, String serviceName) {
     if (kReleaseMode) return;
     if (response.statusCode < 300) return;
-    String apiLog = """
+    String apiLog =
+        """
 
         $serviceName Service Response
         |--------------------------------------------------------------------------------------------------------------------------
@@ -209,7 +211,7 @@ class APIRequestInfoObj {
   int timeSecond = 90;
 
   APIRequestInfoObj({
-    this.requestType = HTTPRequestType.POST,
+    this.requestType = HTTPRequestType.post,
     this.parameter,
     this.headers,
     this.docList = const [],

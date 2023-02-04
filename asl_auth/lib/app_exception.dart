@@ -10,7 +10,7 @@ class AppException implements Exception {
   AppException(
       {this.title,
       this.message,
-      this.type = ExceptionType.None,
+      this.type = ExceptionType.none,
       this.statusCode = 200,
       this.responseBody = ""});
 
@@ -19,43 +19,43 @@ class AppException implements Exception {
     String msg = "";
     switch (type) {
       // No Internet...
-      case ExceptionType.NoInternet:
+      case ExceptionType.noInternet:
         alertTitle = APIErrorMsg.noInternet;
         msg = APIErrorMsg.noInternetMsg;
         break;
 
       // Un-Authorised...
-      case ExceptionType.UnAuthorised:
+      case ExceptionType.unAuthorised:
         alertTitle = title ?? APIErrorMsg.unAuthorisedTitle;
         msg = message ?? APIErrorMsg.unAuthorisedMsg;
         break;
 
       // HTTP Exception...
-      case ExceptionType.HTTPException:
+      case ExceptionType.hTTPException:
         alertTitle = title ?? APIErrorMsg.defaultErrorTitle;
         msg = message ?? APIErrorMsg.somethingWentWrong;
         break;
 
       // Format Exception...(Backend side have an invalid value set in the 'Request Format' property of a REST API method, or don't have any value set at all.)
-      case ExceptionType.FormatException:
+      case ExceptionType.formatException:
         alertTitle = title ?? APIErrorMsg.defaultErrorTitle;
         msg = message ?? APIErrorMsg.somethingWentWrong;
         break;
 
       // General Error...
-      case ExceptionType.None:
+      case ExceptionType.none:
         alertTitle = title ?? APIErrorMsg.defaultErrorTitle;
         msg = message ?? APIErrorMsg.somethingWentWrong;
         break;
 
       // Under Maintainance...
-      case ExceptionType.UnderMaintainance:
+      case ExceptionType.underMaintainance:
         alertTitle = title ?? APIErrorMsg.underMaintainanceTitle;
         msg = message ?? APIErrorMsg.underMaintainanceMsg;
         break;
 
       // Timeout...
-      case ExceptionType.TimeOut:
+      case ExceptionType.timeOut:
         alertTitle = title ?? APIErrorMsg.requestTimeOutTitle;
         msg = message ?? APIErrorMsg.requestTimeOutMessage;
         break;
@@ -69,13 +69,13 @@ class AppException implements Exception {
 }
 
 enum ExceptionType {
-  NoInternet,
-  HTTPException,
-  FormatException,
-  UnAuthorised,
-  UnderMaintainance,
-  TimeOut,
-  None,
+  noInternet,
+  hTTPException,
+  formatException,
+  unAuthorised,
+  underMaintainance,
+  timeOut,
+  none,
 }
 
 class AlertInfo {
@@ -89,8 +89,8 @@ class AlertInfo {
 
 // Http request type...
 enum HTTPRequestType {
-  POST,
-  GET,
-  DELETE,
-  PUT,
+  post,
+  get,
+  delete,
+  put,
 }
